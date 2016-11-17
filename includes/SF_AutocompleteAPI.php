@@ -188,7 +188,7 @@ class SFAutocompleteAPI extends ApiBase {
 			$fromClause = "$propsTable p JOIN $idsTable p_ids ON p.p_id = p_ids.smw_id JOIN $idsTable o_ids ON p.o_id = o_ids.smw_id";
 		} else {
 			if ( $smwgDefaultStore === 'SMWSQLStore3' ) {
-				$valueField = 'p.o_hash';
+				$valueField = 'p.o_blob';
 				$idsTable = $db->tableName( 'smw_object_ids' );
 				$propsTable = $db->tableName( 'smw_di_blob' );
 			} else {
@@ -219,7 +219,7 @@ class SFAutocompleteAPI extends ApiBase {
 				$conditions['base_o_ids.smw_title'] = $baseValue;
 			} else {
 				if ( $smwgDefaultStore === 'SMWSQLStore3' ) {
-					$baseValueField = 'p_base.o_hash';
+					$baseValueField = 'p_base.o_blob';
 					$idsTable = $db->tableName( 'smw_object_ids' );
 					$propsTable = $db->tableName( 'smw_di_blob' );
 				} else {
